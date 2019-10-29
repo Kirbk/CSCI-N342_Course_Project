@@ -15,18 +15,18 @@
 
 
         <!-- DataTables Example -->
-	<form class="needs-validation" novalidate>
+	<form class="addasset" novalidate>
   <div class="form-row">
     <div class="col-md-2 mb-3">
       <label for="Category"><font color="white">Category</font></label>
-		<select class="custom-select mr-sm-2" id="Category">
-			<option selected>Choose...</option>
-			<option value="Laptop">Laptop</option>
-			<option value="Tablet">Tablet</option>
-			<option value="Printer">Printer</option>
-			<option value="Desktop">Desktop</option>
-			<option value="Camera">Camera</option>
-		</select>
+			<select class="custom-select mr-sm-2" id="Category">
+				<option selected>Choose...</option>
+				<option value="Laptop">Laptop</option>
+				<option value="Tablet">Tablet</option>
+				<option value="Printer">Printer</option>
+				<option value="Desktop">Desktop</option>
+				<option value="Camera">Camera</option>
+			</select>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -34,62 +34,64 @@
 
     <div class="col-md-2 mb-3">
       <label for="Manufacture"><font color="white">Manufacture</font></label>
-		<select class="custom-select mr-sm-2" id="Manufacture">
-			<option selected>Choose...</option>
-			<option value="Apple">Apple</option>
-			<option value="Dell">Dell</option>
-			<option value="Canon">Canon</option>
-			<option value="HP">HP</option>
-			<option value="Samsung">Samsung</option>
-			<option value="Lenovo">Lenovo</option>
-			<option value="Microsoft">Microsoft</option>
-			<option value="Cisco">Cisco</option>
-			<option value="Logitech">Logitech</option>
-		</select>
+			<select class="custom-select mr-sm-2" id="Manufacture">
+				<option selected>Choose...</option>
+				<option value="Apple">Apple</option>
+				<option value="Dell">Dell</option>
+				<option value="Canon">Canon</option>
+				<option value="HP">HP</option>
+				<option value="Samsung">Samsung</option>
+				<option value="Lenovo">Lenovo</option>
+				<option value="Microsoft">Microsoft</option>
+				<option value="Cisco">Cisco</option>
+				<option value="Logitech">Logitech</option>
+			</select>
       <div class="valid-feedback">
         Looks good!
       </div>
     </div>
-	  
-	<div class="col-md-4 mb-3">
-		<label for="Model"><font color="white">Model</font></label>
-		<input type="text" class="form-control" id="model" placeholder="Please enter the model of the device..." required>
-		<div class="invalid-feedback">
-			Please provide model infomation.
+
+			<div class="col-md-4 mb-3">
+				<label for="Model"><font color="white">Model</font></label>
+				<input type="text" class="form-control" id="model" placeholder="Please enter the model of the device..." required>
+				<div class="invalid-feedback">
+					Please provide model infomation.
+				</div>
 			</div>
 		</div>
-
-	<div class="col-md-5 mb-3">
-		<label for="Serialnumber"><font color="white">Serialnumber</font></label>
-		<input type="text" class="form-control" id="Serialnumber" placeholder="Please enter the serial number of the device..." required>
-		<div class="invalid-feedback">
-			Please provide models serial number.
+  	<div class="form-row">
+			<div class="col-md-5 mb-3">
+				<label for="Serialnumber"><font color="white">Serialnumber</font></label>
+				<input type="text" class="form-control" id="Serialnumber" placeholder="Please enter the serial number of the device..." required>
+				<div class="invalid-feedback">
+					Please provide models serial number.
+				</div>
 			</div>
 		</div>
-
-	<div class="form-row">
+		<div class="form-row">
 	     <div class="col-md-4 mb-3">
-	      	 <label for="Firstname"><font color="white">Firstname</font></label>
-	      	 <input type="text" class="form-control" id="firstname" placeholder="Please enter users first name..." required>
-	      	 <div class="invalid-feedback">
+	       <label for="Firstname"><font color="white">Firstname</font></label>
+	       <input type="text" class="form-control" id="firstname" placeholder="Please enter users first name..." required>
+	       <div class="invalid-feedback">
 	         Please provide first name .
-	            </div>
+	       </div>
 	     </div>
-	<div class="col-md-4 mb-3">
-	 	   <label for="Lastname"><font color="white">Lastname</font></label>
-	 	   <input type="text" class="form-control" id="lastname" placeholder="Please enter users last name..." required>
-	 	   <div class="invalid-feedback">
-	 	        Please provide last name .
+	 	     <div class="col-md-4 mb-3">
+	 	       <label for="Lastname"><font color="white">Lastname</font></label>
+	 	       <input type="text" class="form-control" id="lastname" placeholder="Please enter users last name..." required>
+	 	       <div class="invalid-feedback">
+	 	         Please provide last name .
 	 	       </div>
-	 	</div>
+	 	     </div>
 
-	<div class="col-md-6 mb-3">
-		  <label for="Loaction"><font color="white">Loaction</font></label>
-		  <input type="text" class="form-control" id="loaction" placeholder="Please choose the loaction of this new device..." required>
-		  <div class="invalid-feedback">
-		 	    Please provide last name .
-		 </div>
-	</div>
+		 	     <div class="col-md-6 mb-3">
+		 	       <label for="Loaction"><font color="white">Loaction</font></label>
+		 	       <input type="text" class="form-control" id="loaction" placeholder="Please choose the loaction of this new device..." required>
+		 	       <div class="invalid-feedback">
+		 	         Please provide last name .
+		 	       </div>
+		 	     </div>
+				 </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 
