@@ -23,14 +23,27 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
+<<<<<<< HEAD
                   <tr>
                     <th>Add</th>
                     <th>Name</th>
 		    <th>Submit</th>
+=======
+                   <tr>
+                    <th>Category</th>
+                    <th>Manufactures</th>
+                    <th>Serialnumber</th>
+                    <th>Laptop</th>
+                    <th>Tablet</th>
+                    <th>Printers</th>
+                    <th>Users</th>
+                    <th>Locat</th>
+>>>>>>> a4e0aaa197d3d1dea89bf1ddfdcc1d31e4b7c6b9
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
+<<<<<<< HEAD
                     <th>Add</th>
                     <th>Name</th>
 		    <th>Submit</th>
@@ -58,6 +71,18 @@
  		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                 </tbody>
+=======
+                    <th>Category</th>
+                    <th>Manufactures</th>
+                    <th>Serialnumber</th>
+                    <th>Laptop</th>
+                    <th>Tablet</th>
+                    <th>Printers</th>
+                    <th>Users</th>
+                    <th>Locat</th>
+                  </tr>
+                </tfoot>
+>>>>>>> a4e0aaa197d3d1dea89bf1ddfdcc1d31e4b7c6b9
               </table>
             </div>
           </div>
