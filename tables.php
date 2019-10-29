@@ -2,6 +2,17 @@
 	include 'header.php';
 ?>
 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var table = $('#dataTable').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "ajax": "./tables_server_proc.php"
+      } );
+    } );
+  </script>
+
     <div id="content-wrapper">
 
       <div class="container-fluid">
@@ -25,25 +36,19 @@
                 <thead>
                    <tr>
                     <th>Category</th>
-                    <th>Manufactures</th>
-                    <th>Serialnumber</th>
-                    <th>Laptop</th>
-                    <th>Tablet</th>
-                    <th>Printers</th>
-                    <th>Users</th>
-                    <th>Locat</th>
+                    <th>Manufacturer</th>
+                    <th>Serial Number</th>
+                    <th>User</th>
+                    <th>Location</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
                     <th>Category</th>
-                    <th>Manufactures</th>
-                    <th>Serialnumber</th>
-                    <th>Laptop</th>
-                    <th>Tablet</th>
-                    <th>Printers</th>
-                    <th>Users</th>
-                    <th>Locat</th>
+                    <th>Manufacturer</th>
+                    <th>Serial Number</th>
+                    <th>User</th>
+                    <th>Location</th>
                   </tr>
                 </tfoot>
               </table>
