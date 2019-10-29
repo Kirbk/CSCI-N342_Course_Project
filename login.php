@@ -1,3 +1,46 @@
+<?php
+  session_start();
+  require_once "inc/util.php";
+  include("config.php");
+
+  $user = "";
+  $pass = "";
+
+  if (isset($_POST['submit']))
+  {
+    $user = trim($_POST['user']);
+    $pass = md5(trim($_POST['password']));
+
+    $stmt = $con->prepare("select count(*) as c from Proj_ADMIN where User = ? and Pass = ?");
+    $stmt->execute(array($user, $pass));
+    $row = $stmt->fetch(PDO::FETCH_OBJ);
+    
+    $count = $row->c;
+    
+    if ($count == 1)
+					{
+						$stmt = $con->prepare("Select AID from Proj_ADMIN where username = ? and password = ?");
+						$stmt->execute(array($user, $pass));
+						$row = $stmt->fetch(PDO::FETCH_OBJ);
+					
+						$aid = $row->AID;
+						
+
+						/************************************************************************************************
+						*Session variables are variables that belong to the session scope. 
+						*They exit when a new session starts, and they are destroyed either when a session is killed or expired.
+						*Instructions and concerns on using sessions can be found at http://www.php.net/manual/en/book.session.php.
+						*User defined session variables can be used to pass data from one page to another. 
+						*/
+						$_SESSION['aid'] = $aid;
+						$_SESSION['uname'] = $user;
+						Header ("Location:index.php");
+
+					}
+					else $msg = "The information entered does not match with the records in our database.";
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,33 +68,22 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">
-        <form>
+        <form action="login.php" method="post">
           <div class="form-group">
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-              <label for="inputEmail">Email address</label>
+              <input type="text" id="user" name="user" class="form-control" placeholder="Username" required="required" autofocus="autofocus">
+              <label for="inputEmail">Username</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+              <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="required">
               <label for="inputPassword">Password</label>
             </div>
           </div>
-          <div class="form-group">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me">
-                Remember Password
-              </label>
-            </div>
-          </div>
-          <a class="btn btn-primary btn-block" href="index.html">Login</a>
+          <input type="submit" name="submit" class="btn btn-primary btn-block" value="Login">
+          <!--<a class="btn btn-primary btn-block" href="index.html">Login</a>-->
         </form>
-        <div class="text-center">
-          <a class="d-block small mt-3" href="register.html">Register an Account</a>
-          <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
-        </div>
       </div>
     </div>
   </div>
