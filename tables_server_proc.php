@@ -30,9 +30,11 @@ $primaryKey = 'SerialNum';
 $columns = array(
     array( 'db' => 'Category', 'dt' => 0 ),
     array( 'db' => 'Manufacturer',  'dt' => 1 ),
-    array( 'db' => 'SerialNum',  'dt' => 2 ),
-    array( 'db' => 'User',    'dt' => 3 ),
-    array( 'db' => 'Location',     'dt' => 4 )
+    array( 'db' => 'ModelNum',  'dt' => 2 ),
+    array( 'db' => 'SerialNum',    'dt' => 3 ),
+    array( 'db' => 'LastChecked',     'dt' => 4),
+    array( 'db' => 'Location',     'dt' => 5),
+    array ( 'db' => 'Surplus', 'dt' => 6)
 );
  
 // SQL server connection information

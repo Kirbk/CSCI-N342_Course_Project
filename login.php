@@ -19,7 +19,7 @@
     
     if ($count == 1)
 					{
-						$stmt = $con->prepare("Select AID from Proj_ADMIN where username = ? and password = ?");
+						$stmt = $con->prepare("select AID from Proj_ADMIN where User = ? and Pass = ?");
 						$stmt->execute(array($user, $pass));
 						$row = $stmt->fetch(PDO::FETCH_OBJ);
 					
@@ -32,7 +32,7 @@
 						*Instructions and concerns on using sessions can be found at http://www.php.net/manual/en/book.session.php.
 						*User defined session variables can be used to pass data from one page to another. 
 						*/
-						$_SESSION['aid'] = $aid;
+            $_SESSION['aid'] = $aid;
 						$_SESSION['uname'] = $user;
 						Header ("Location:index.php");
 
