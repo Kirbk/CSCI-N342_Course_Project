@@ -1,18 +1,6 @@
 <?php
 	include 'header.php';
 ?>
-
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      var table = $('#dataTable').DataTable( {
-        "processing": true,
-        "serverSide": true,
-        "ajax": "./tables_server_proc.php"
-      } );
-    } );
-  </script>
-
     <div id="content-wrapper">
 
       <div class="container-fluid">
@@ -35,34 +23,14 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-<<<<<<< HEAD
                   <tr>
                     <th>Add</th>
                     <th>Name</th>
 		    <th>Submit</th>
-=======
-                   <tr>
-                    <th>Category</th>
-<<<<<<< HEAD
-                    <th>Manufacturer</th>
-                    <th>Serial Number</th>
-                    <th>User</th>
-                    <th>Location</th>
-=======
-                    <th>Manufactures</th>
-                    <th>Serialnumber</th>
-                    <th>Laptop</th>
-                    <th>Tablet</th>
-                    <th>Printers</th>
-                    <th>Users</th>
-                    <th>Locat</th>
->>>>>>> a4e0aaa197d3d1dea89bf1ddfdcc1d31e4b7c6b9
->>>>>>> 15e5cb70ca87de8b79c8e184ca6097427ebe8b9a
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
-<<<<<<< HEAD
                     <th>Add</th>
                     <th>Name</th>
 		    <th>Submit</th>
@@ -80,25 +48,21 @@
  		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                   <tr>
-                    <td>Model</td>
-		    <td><form action="/"><input type="text" name="addmodel"></td>
+                    <td>Network</td>
+		    <td><form action="/"><input type="text" name="addnetwork"></td>
  		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                   <tr>
-                    <td>Room Number</td>
+                    <td>User</td>
+		    <td><form action="/"><input type="text" name="addperson"></td>
+ 		    <td><input type="submit" value="Submit"></form></td>
+                  </tr>
+                  <tr>
+                    <td>Location</td>
 		    <td><form action="/"><input type="text" name="addroom"></td>
  		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                 </tbody>
-=======
-                    <th>Category</th>
-                    <th>Manufacturer</th>
-                    <th>Serial Number</th>
-                    <th>User</th>
-                    <th>Location</th>
-                  </tr>
-                </tfoot>
->>>>>>> a4e0aaa197d3d1dea89bf1ddfdcc1d31e4b7c6b9
               </table>
             </div>
           </div>
