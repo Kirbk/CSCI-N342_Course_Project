@@ -10,7 +10,7 @@
           <li class="breadcrumb-item">
             <a href="#">Verify</a>
           </li>
-          <li class="breadcrumb-item active">Assets Due for Check</li>
+          <li class="breadcrumb-item active">Add Assets</li>
         </ol>
 
 
@@ -92,6 +92,13 @@
 		 	       </div>
 		 	     </div>
 				 </div>
+				<div class="form-row">
+				 <div class="form-group">
+    <label for="notes"><font color="white">Additional notes</font></label>
+    <textarea class="form-control" id="notes" rows="4"></textarea>
+  	</div>
+	</div>
+</form>
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 
