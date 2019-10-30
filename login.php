@@ -63,7 +63,7 @@
 </head>
 
 <body class="bg-dark">
-
+<h1 style="text-align:center; margin-top: 30px; color: white;">IUPUI School of Education<br /> Asset Manager</h1>
   <div class="container">
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>

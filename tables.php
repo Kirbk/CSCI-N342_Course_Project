@@ -20,10 +20,11 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Update Options</a>
+            <a href="#">Add Assets</a>
           </li>
-          <li class="breadcrumb-item active">Add Options</li>
+          <li class="breadcrumb-item active">Add an Option</li>
         </ol>
+
 
         <!-- DataTables Example -->
         <div class="card mb-3">
@@ -34,16 +35,62 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
+<<<<<<< HEAD
+                  <tr>
+                    <th>Add</th>
+                    <th>Name</th>
+		    <th>Submit</th>
+=======
                    <tr>
                     <th>Category</th>
+<<<<<<< HEAD
                     <th>Manufacturer</th>
                     <th>Serial Number</th>
                     <th>User</th>
                     <th>Location</th>
+=======
+                    <th>Manufactures</th>
+                    <th>Serialnumber</th>
+                    <th>Laptop</th>
+                    <th>Tablet</th>
+                    <th>Printers</th>
+                    <th>Users</th>
+                    <th>Locat</th>
+>>>>>>> a4e0aaa197d3d1dea89bf1ddfdcc1d31e4b7c6b9
+>>>>>>> 15e5cb70ca87de8b79c8e184ca6097427ebe8b9a
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
+<<<<<<< HEAD
+                    <th>Add</th>
+                    <th>Name</th>
+		    <th>Submit</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <tr>
+                    <td>Category</td>
+                    <td><form action="/"><input type="text" name="addcateg"></td>
+ 		    <td><input type="submit" value="Submit"></form></td>
+                  </tr>
+                  <tr>
+                    <td>Manufacturer</td>
+		    <td><form action="/"><input type="text" name="addmanu"></td>
+ 		    <td><input type="submit" value="Submit"></form></td>
+                  </tr>
+                  <tr>
+                    <td>Model</td>
+		    <td><form action="/"><input type="text" name="addmodel"></td>
+ 		    <td><input type="submit" value="Submit"></form></td>
+                  </tr>
+                  <tr>
+                    <td>Room Number</td>
+		    <td><form action="/"><input type="text" name="addroom"></td>
+ 		    <td><input type="submit" value="Submit"></form></td>
+                  </tr>
+                </tbody>
+=======
                     <th>Category</th>
                     <th>Manufacturer</th>
                     <th>Serial Number</th>
@@ -51,15 +98,12 @@
                     <th>Location</th>
                   </tr>
                 </tfoot>
+>>>>>>> a4e0aaa197d3d1dea89bf1ddfdcc1d31e4b7c6b9
               </table>
             </div>
           </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          <div class="card-footer small text-muted"></div>
         </div>
-
-        <p class="small text-center text-muted my-5">
-          <em>More table examples coming soon...</em>
-        </p>
 
       </div>
       <!-- /.container-fluid -->
@@ -111,6 +155,7 @@
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Page level plugin JavaScript-->
+  <script src="vendor/chart.js/Chart.min.js"></script>
   <script src="vendor/datatables/jquery.dataTables.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
@@ -119,6 +164,7 @@
 
   <!-- Demo scripts for this page-->
   <script src="js/demo/datatables-demo.js"></script>
+  <script src="js/demo/chart-area-demo.js"></script>
 
 </body>
 

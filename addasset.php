@@ -10,196 +10,98 @@
           <li class="breadcrumb-item">
             <a href="#">Verify</a>
           </li>
-          <li class="breadcrumb-item active">Assets Due for Check</li>
+          <li class="breadcrumb-item active">Add Assets</li>
         </ol>
 
 
         <!-- DataTables Example -->
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            Data Table Example</div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>Category</th>
-                    <th>Manufacturer</th>
-                    <th>Model</th>
-                    <th>Serial Number</th>
-                    <th>Date Last Verified</th>
-                    <th>Room Number</th>
-                    <th>Verify</th>
-                  </tr>
-                </thead>
-                <tfoot>
-                  <tr>
-                    <th>Category</th>
-                    <th>Manufacturer</th>
-                    <th>Model</th>
-                    <th>Serial Number</th>
-                    <th>Date Last Verified</th>
-                    <th>Room Number</th>
-                    <th>Verify</th>
-                  </tr>
-                </tfoot>
-                <tbody>
-                  <tr>
-                    <td>Laptop</td>
-                    <td>HP</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td></td>
-                    <td><div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          </div></td>
-                  </tr>
-                  <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td></td>
-                    <td><div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          </div></td>
-                  </tr>
-                  <tr>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td></td>
-                    <td><div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          </div></td>
-                  </tr>
-                  <tr>
-                    <td>Cedric Kelly</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2012/03/29</td>
-                    <td></td>
-                    <td><div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          </div></td>
-                  </tr>
-                  <tr>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                    <td>2008/11/28</td>
-                    <td></td>
-                    <td><div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          </div></td>
-                  </tr>
-                  <tr>
-                    <td>Brielle Williamson</td>
-                    <td>Integration Specialist</td>
-                    <td>New York</td>
-                    <td>61</td>
-                    <td>2012/12/02</td>
-                    <td></td>
-                    <td><div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          </div></td>
-                  </tr>
-                  <tr>
-                    <td>Herrod Chandler</td>
-                    <td>Sales Assistant</td>
-                    <td>San Francisco</td>
-                    <td>59</td>
-                    <td>2012/08/06</td>
-                    <td></td>
-                    <td><div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          </div></td>
-                  </tr>
-                  <tr>
-                    <td>Rhona Davidson</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>2010/10/14</td>
-                    <td></td>
-                    <td><div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          </div></td>
-                  </tr>
-                  <tr>
-                    <td>Colleen Hurst</td>
-                    <td>Javascript Developer</td>
-                    <td>San Francisco</td>
-                    <td>39</td>
-                    <td>2009/09/15</td>
-                    <td></td>
-                    <td><div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          </div></td>
-                  </tr>
-                  <tr>
-                    <td>Sonya Frost</td>
-                    <td>Software Engineer</td>
-                    <td>Edinburgh</td>
-                    <td>23</td>
-                    <td>2008/12/13</td>
-                    <td></td>
-                    <td><div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          </div></td>
-                  </tr>
-                  <tr>
-                    <td>Jena Gaines</td>
-                    <td>Office Manager</td>
-                    <td>London</td>
-                    <td>30</td>
-                    <td>2008/12/19</td>
-                    <td></td>
-                    <td><div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          </div></td>
-                  </tr>
-                  <tr>
-                    <td>Quinn Flynn</td>
-                    <td>Support Lead</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2013/03/03</td>
-                    <td></td>
-                    <td><div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          </div></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="card-footer small text-muted"></div>
-        </div>
-
+	<form class="addasset" novalidate>
+  <div class="form-row">
+    <div class="col-md-2 mb-3">
+      <label for="Category"><font color="white">Category</font></label>
+			<select class="custom-select mr-sm-2" id="Category">
+				<option selected>Choose...</option>
+				<option value="Laptop">Laptop</option>
+				<option value="Tablet">Tablet</option>
+				<option value="Printer">Printer</option>
+				<option value="Desktop">Desktop</option>
+				<option value="Camera">Camera</option>
+			</select>
+      <div class="valid-feedback">
+        Looks good!
       </div>
-      <!-- /.container-fluid -->
-
-      <!-- Sticky Footer -->
-      <footer class="sticky-footer">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
-
     </div>
-    <!-- /.content-wrapper -->
 
-  </div>
+    <div class="col-md-2 mb-3">
+      <label for="Manufacturer"><font color="white">Manufacturer</font></label>
+			<select class="custom-select mr-sm-2" id="Manufacturer">
+				<option selected>Choose...</option>
+				<option value="Apple">Apple</option>
+				<option value="Dell">Dell</option>
+				<option value="Canon">Canon</option>
+				<option value="HP">HP</option>
+				<option value="Samsung">Samsung</option>
+				<option value="Lenovo">Lenovo</option>
+				<option value="Microsoft">Microsoft</option>
+				<option value="Cisco">Cisco</option>
+				<option value="Logitech">Logitech</option>
+			</select>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+
+	<div class="col-md-4 mb-3">
+		<label for="Model"><font color="white">Model</font></label>
+		<input type="text" class="form-control" id="model" placeholder="Please enter the model of the device..." required>
+		<div class="invalid-feedback">
+			Please provide model infomation.
+				</div>
+			</div>
+		</div>
+  	<div class="form-row">
+		<div class="col-md-5 mb-3">
+			<label for="SerialNumber"><font color="white">Serial Number</font></label>
+			<input type="text" class="form-control" id="Serialnumber" placeholder="Please enter the serial number of the device..." required>
+			<div class="invalid-feedback">
+					Please provide models serial number.
+				</div>
+			</div>
+		</div>
+		<div class="form-row">
+	     <div class="col-md-4 mb-3">
+	       <label for="Firstname"><font color="white">First name</font></label>
+	       <input type="text" class="form-control" id="firstname" placeholder="Please enter users first name..." required>
+	       <div class="invalid-feedback">
+	         Please provide first name .
+	       </div>
+	     </div>
+	    <div class="col-md-4 mb-3">
+	 	   <label for="Lastname"><font color="white">Last name</font></label>
+	 	    <input type="text" class="form-control" id="lastname" placeholder="Please enter users last name..." required>
+	 	    <div class="invalid-feedback">
+	 	         Please provide last name .
+	 	       </div>
+	 	     </div>
+
+	     <div class="col-md-6 mb-3">
+		   <label for="Location"><font color="white">Location</font></label>
+		    <input type="text" class="form-control" id="loaction" placeholder="Please choose the location of this new device..." required>
+		    <div class="invalid-feedback">
+		 	         Please provide last name .
+		 	       </div>
+		 	     </div>
+				 </div>
+				<div class="form-row">
+				 <div class="form-group">
+    <label for="notes"><font color="white">Additional notes</font></label>
+    <textarea class="form-control" id="notes" rows="4"></textarea>
+  	</div>
+	</div>
+</form>
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+
   <!-- /#wrapper -->
 
   <!-- Scroll to Top Button-->
