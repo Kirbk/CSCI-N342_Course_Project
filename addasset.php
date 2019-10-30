@@ -53,7 +53,7 @@
 
 	<div class="col-md-4 mb-3">
 		<label for="Model"><font color="white">Model</font></label>
-		<input type="text" class="form-control" id="model" placeholder="Please enter the model of the device..." required>
+		<input type="text" class="form-control" id="model" placeholder="Enter the model of the device..." required>
 		<div class="invalid-feedback">
 			Please provide model infomation.
 				</div>
@@ -61,34 +61,38 @@
 		</div>
   	<div class="form-row">
 		<div class="col-md-5 mb-3">
-			<label for="SerialNumber"><font color="white">Serial Number</font></label>
-			<input type="text" class="form-control" id="Serialnumber" placeholder="Please enter the serial number of the device..." required>
+			<label for="SerialNum"><font color="white">Serial Number</font></label>
+			<input type="text" class="form-control" id="SerialNum" placeholder="Enter the serial number of the device..." required>
 			<div class="invalid-feedback">
-					Please provide models serial number.
+					Provide models serial number.
 				</div>
 			</div>
+			<div class="col-md-2 mb-3">
+			<label for="PurchaseDate"><font color="white">Purchase Date</font></label>
+      <input type="date" name="PurchaseDate" id="PurchaseDate">
 		</div>
+	</div>
 		<div class="form-row">
 	     <div class="col-md-4 mb-3">
 	       <label for="Firstname"><font color="white">First name</font></label>
-	       <input type="text" class="form-control" id="firstname" placeholder="Please enter users first name..." required>
+	       <input type="text" class="form-control" id="firstname" placeholder="Enter users first name..." required>
 	       <div class="invalid-feedback">
-	         Please provide first name .
+	         Provide first name .
 	       </div>
 	     </div>
 	    <div class="col-md-4 mb-3">
 	 	   <label for="Lastname"><font color="white">Last name</font></label>
-	 	    <input type="text" class="form-control" id="lastname" placeholder="Please enter users last name..." required>
+	 	    <input type="text" class="form-control" id="lastname" placeholder="Enter users last name..." required>
 	 	    <div class="invalid-feedback">
-	 	         Please provide last name .
+	 	        Provide last name .
 	 	       </div>
 	 	     </div>
 
 	     <div class="col-md-6 mb-3">
 		   <label for="Location"><font color="white">Location</font></label>
-		    <input type="text" class="form-control" id="loaction" placeholder="Please choose the location of this new device..." required>
+		    <input type="text" class="form-control" id="loaction" placeholder="Choose the location of this new device..." required>
 		    <div class="invalid-feedback">
-		 	         Please provide last name .
+		 	         Provide last name .
 		 	       </div>
 		 	     </div>
 				 </div>
