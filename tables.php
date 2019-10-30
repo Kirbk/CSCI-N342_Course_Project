@@ -1,5 +1,37 @@
 <?php
-	include 'header.php';
+  include 'header.php';
+
+  require_once "config.php";
+  
+  if (isset($_POST['cat'])) {
+    $stmt = $con->prepare("insert into Proj_CATEGORY (CID, Name) VALUES (NULL, ?)");
+    $stmt->execute(array($_POST['addcateg']));
+    echo "<a style='color:white'>Successfully added!</a>";
+  }
+
+  if (isset($_POST['manu'])) {
+    $stmt = $con->prepare("insert into Proj_MANUFACTURER (MID, Name) VALUES (NULL, ?)");
+    $stmt->execute(array($_POST['addmanu']));
+    echo "<a style='color:white'>Successfully added!</a>";
+  }
+
+  if (isset($_POST['network'])) {
+    $stmt = $con->prepare("insert into Proj_NETWORK (NID, Name) VALUES (NULL, ?)");
+    $stmt->execute(array($_POST['addnetwork']));
+    echo "<a style='color:white'>Successfully added!</a>";
+  }
+
+  if (isset($_POST['person'])) {
+    $stmt = $con->prepare("insert into Proj_USER (UID, FirstName, LastName) VALUES (NULL, ?, ?)");
+    $stmt->execute(array($_POST['addpersonfirst'], $_POST['addpersonlast']));
+    echo "<a style='color:white'>Successfully added!</a>";
+  }
+
+  if (isset($_POST['room'])) {
+    $stmt = $con->prepare("insert into Proj_LOCATION (LID, NAME) VALUES (NULL, ?)");
+    $stmt->execute(array($_POST['addroom']));
+    echo "<a style='color:white'>Successfully added!</a>";
+  }
 ?>
     <div id="content-wrapper">
 
@@ -39,28 +71,28 @@
                 <tbody>
                   <tr>
                     <td>Category</td>
-                    <td><form action="/"><input type="text" name="addcateg"></td>
- 		    <td><input type="submit" value="Submit"></form></td>
+                    <td><form action="tables.php" method="post"><input type="text" name="addcateg"></td>
+ 		    <td><input type="submit" value="Submit" name="cat"></form></td>
                   </tr>
                   <tr>
                     <td>Manufacturer</td>
-		    <td><form action="/"><input type="text" name="addmanu"></td>
- 		    <td><input type="submit" value="Submit"></form></td>
+		    <td><form action="tables.php" method="post"><input type="text" name="addmanu"></td>
+ 		    <td><input type="submit" value="Submit" name="manu"></form></td>
                   </tr>
                   <tr>
                     <td>Network</td>
-		    <td><form action="/"><input type="text" name="addnetwork"></td>
- 		    <td><input type="submit" value="Submit"></form></td>
+		    <td><form action="tables.php" method="post"><input type="text" name="addnetwork"></td>
+ 		    <td><input type="submit" value="Submit" name="network"></form></td>
                   </tr>
                   <tr>
                     <td>User</td>
-		    <td><form action="/"><input type="text" name="addperson"></td>
- 		    <td><input type="submit" value="Submit"></form></td>
+		    <td><form action="tables.php" method="post"><input type="text" name="addpersonfirst" placeholder="First Name"><input type="text" name="addpersonlast" placeholder="Last Name"></td>
+ 		    <td><input type="submit" value="Submit" name="person"></form></td>
                   </tr>
                   <tr>
                     <td>Location</td>
-		    <td><form action="/"><input type="text" name="addroom"></td>
- 		    <td><input type="submit" value="Submit"></form></td>
+		    <td><form action="tables.php" method="post"><input type="text" name="addroom"></td>
+ 		    <td><input type="submit" value="Submit" name=room></form></td>
                   </tr>
                 </tbody>
               </table>

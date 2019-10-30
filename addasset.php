@@ -3,6 +3,15 @@
 	if ($_SESSION['aid'] == NULL)
 		Header("Location:login.php");
 	include 'header.php';
+
+
+	if (isset($_POST['submit'])) {
+		echo "<a style='color:white'>Successfully added!</a>";
+		require_once "config.php";
+
+		$stmt = $con->prepare("insert into Proj_DEVICE (SerialNum, Category, Manufacturer, ModelNum, Location, User, Network, PurchaseDate, WarrantyDate, LastChecked, Surplus, Notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		$stmt->execute(array($_POST['SerialNum'], $_POST['Category'], $_POST['Manufacturer'], $_POST['model'], 1, 1, 1, $_POST['PurchaseDate'], 0, $_POST['PurchaseDate'], 0, $_POST['notes']));
+	}
 ?>
 
     <div id="content-wrapper">
@@ -19,17 +28,19 @@
 
 
         <!-- DataTables Example -->
-	<form class="addasset" novalidate>
+
+	<form class="addasset" action="addasset.php" method="post">
   <div class="form-row">
     <div class="col-md-2 mb-3">
       <label for="Category"><font color="white">Category</font></label>
-			<select class="custom-select mr-sm-2" id="Category">
+			<select class="custom-select mr-sm-2" id="Category" name="Category">
 				<option selected>Choose...</option>
-				<option value="Laptop">Laptop</option>
-				<option value="Tablet">Tablet</option>
-				<option value="Printer">Printer</option>
-				<option value="Desktop">Desktop</option>
-				<option value="Camera">Camera</option>
+				<option value="2">Laptop</option>
+				<option value="3">Tablet</option>
+				<option value="5">Printer</option>
+				<option value="1">Desktop</option>
+				<option value="4">Camera</option>
+				<option value="6">Video Conferencing</option>
 			</select>
       <div class="valid-feedback">
         Looks good!
@@ -38,17 +49,18 @@
 
     <div class="col-md-2 mb-3">
       <label for="Manufacturer"><font color="white">Manufacturer</font></label>
-			<select class="custom-select mr-sm-2" id="Manufacturer">
+			<select class="custom-select mr-sm-2" id="Manufacturer" name="Manufacturer">
 				<option selected>Choose...</option>
-				<option value="Apple">Apple</option>
-				<option value="Dell">Dell</option>
-				<option value="Canon">Canon</option>
-				<option value="HP">HP</option>
-				<option value="Samsung">Samsung</option>
-				<option value="Lenovo">Lenovo</option>
-				<option value="Microsoft">Microsoft</option>
-				<option value="Cisco">Cisco</option>
-				<option value="Logitech">Logitech</option>
+				<option value="1">Apple</option>
+				<option value="4">Dell</option>
+				<option value="2">Canon</option>
+				<option value="5">HP</option>
+				<option value="7">Samsung</option>
+				<option value="8">Lenovo</option>
+				<option value="9">Microsoft</option>
+				<option value="3">Cisco</option>
+				<option value="6">Logitech</option>
+				<option value="10">Ricoh</option>
 			</select>
       <div class="valid-feedback">
         Looks good!
@@ -57,7 +69,7 @@
 
 	<div class="col-md-4 mb-3">
 		<label for="Model"><font color="white">Model</font></label>
-		<input type="text" class="form-control" id="model" placeholder="Enter the model of the device..." required>
+		<input type="text" class="form-control" id="model" name="model" placeholder="Enter the model of the device..." required>
 		<div class="invalid-feedback">
 			Please provide model infomation.
 				</div>
@@ -66,14 +78,14 @@
   	<div class="form-row">
 		<div class="col-md-5 mb-3">
 			<label for="SerialNum"><font color="white">Serial Number</font></label>
-			<input type="text" class="form-control" id="SerialNum" placeholder="Enter the serial number of the device..." required>
+			<input type="text" class="form-control" id="SerialNum" name="SerialNum" placeholder="Enter the serial number of the device..." required>
 			<div class="invalid-feedback">
 					Provide models serial number.
 				</div>
 			</div>
 			<div class="col-md-2 mb-3">
 			<label for="PurchaseDate"><font color="white">Purchase Date</font></label>
-      <input type="date" name="PurchaseDate" id="PurchaseDate">
+      <input type="date" name="PurchaseDate" id="PurchaseDate" name="PurchaseDate">
 		</div>
 	</div>
 		<div class="form-row">
@@ -94,7 +106,7 @@
 
 	     <div class="col-md-6 mb-3">
 		   <label for="Location"><font color="white">Location</font></label>
-		    <input type="text" class="form-control" id="loaction" placeholder="Choose the location of this new device..." required>
+		    <input type="text" class="form-control" id="location" placeholder="Choose the location of this new device..." required>
 		    <div class="invalid-feedback">
 		 	         Provide last name .
 		 	       </div>
@@ -103,11 +115,10 @@
 				<div class="form-row">
 				 <div class="form-group">
     <label for="notes"><font color="white">Additional notes</font></label>
-    <textarea class="form-control" id="notes" rows="4"></textarea>
+    <textarea class="form-control" id="notes" name="notes" rows="4"></textarea>
   	</div>
 	</div>
-</form>
-  <button class="btn btn-primary" type="submit">Submit form</button>
+	<input type='submit' id='submit' name="submit" />
 </form>
 
   <!-- /#wrapper -->
