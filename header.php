@@ -56,4 +56,8 @@
         <a class="nav-link" href="tables.php">
           <span>Update Options</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="logout.php">
+          <span>Logout</span></a>
+      </li>
     </ul>

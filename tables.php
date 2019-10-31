@@ -1,4 +1,7 @@
 <?php
+session_start();
+  if ($_SESSION['aid'] == NULL)
+    Header ("Location:login.php");
   include 'header.php';
 
   require_once "config.php";
