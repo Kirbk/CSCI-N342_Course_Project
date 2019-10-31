@@ -133,7 +133,7 @@
           <li class="breadcrumb-item">
             <a href="#">Reports</a>
           </li>
-          <li class="breadcrumb-item active">Search by Categoryk</li>
+          <li class="breadcrumb-item active">Search by Category</li>
         </ol>
 
 
