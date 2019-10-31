@@ -5,6 +5,125 @@
 	include 'header.php';
 ?>
 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
+  <script>
+    var table;
+    function verify(serial) {
+      var xmlhttp;
+      if (window.XMLHttpRequest)
+      {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+      }
+      else
+      {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.open("GET","verify.php?q="+serial,true);
+    xmlhttp.send();
+    table.draw();
+  }
+  function findCategory(catID, serial) {
+    var xmlhttp;
+      if (window.XMLHttpRequest)
+      {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+      }
+      else
+      {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      var cat = "";
+      xmlhttp.open("GET","findcat.php?q="+catID,true);
+    xmlhttp.send();
+      xmlhttp.onreadystatechange=function()
+      {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+          var id = "CAT" + serial;
+          document.getElementById(id).innerHTML=xmlhttp.responseText;
+        }
+      }
+  }
+  function joinTable() {
+    var xmlhttp;
+      if (window.XMLHttpRequest)
+      {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+      }
+      else
+      {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.open("GET","join.php",true);
+    xmlhttp.send();
+    console.log(xmlhttp);
+    return xmlhttp.responseText;
+  }
+  function findManufacturer(manID, serial) {
+    var xmlhttp;
+      if (window.XMLHttpRequest)
+      {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+      }
+      else
+      {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      var cat = "";
+      xmlhttp.open("GET","findman.php?q="+manID,true);
+    xmlhttp.send();
+      xmlhttp.onreadystatechange=function()
+      {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+          var id = "MAN" + serial;
+          document.getElementById(id).innerHTML=xmlhttp.responseText;
+        }
+      }
+  }
+  function findLocation(locID, serial) {
+    var xmlhttp;
+      if (window.XMLHttpRequest)
+      {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+      }
+      else
+      {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      var cat = "";
+      xmlhttp.open("GET","findloc.php?q="+locID,true);
+      console.log(serial);
+    xmlhttp.send();
+      xmlhttp.onreadystatechange=function()
+      {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+          var id = "LOC" + serial;
+          document.getElementById(id).innerHTML=xmlhttp.responseText;
+        }
+      }
+  }
+    $(document).ready(function() {
+      table = $('#dataTable').DataTable( {
+        "columnDefs": [
+          {
+            "targets": 6,
+            "data": null,
+            "defaultContent": "",
+            "render": function ( data, type, row, meta ) {
+              return '<button id="' + data[3] + '" onClick="verify(this.id)">Verify</button>';
+            }
+          }
+        ],
+        "processing": true,
+        "serverSide": true,
+        "ajax": "./tables_server_proc.php",
+        "order": [4, 'asc']
+      } );
+    } );
+  </script>
+
     <div id="content-wrapper">
 
       <div class="container-fluid">
@@ -14,16 +133,44 @@
           <li class="breadcrumb-item">
             <a href="#">Reports</a>
           </li>
-          <li class="breadcrumb-item active">View & Search</li>
+          <li class="breadcrumb-item active">Search by Categoryk</li>
         </ol>
 
-        <div class="row">
-          <div class="col-lg-8">
 
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Data Table Example</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Manufacturer</th>
+                    <th>Model</th>
+                    <th>Serial Number</th>
+                    <th>Date Last Verified</th>
+                    <th>Room Number</th>
+                    <th>Verify</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Category</th>
+                    <th>Manufacturer</th>
+                    <th>Model</th>
+                    <th>Serial Number</th>
+                    <th>Date Last Verified</th>
+                    <th>Room Number</th>
+                    <th>Verify</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
           </div>
-          <div class="col-lg-4">
-
-          </div>
+          <div class="card-footer small text-muted"></div>
         </div>
 
       </div>
@@ -77,14 +224,15 @@
 
   <!-- Page level plugin JavaScript-->
   <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.min.js"></script>
 
   <!-- Demo scripts for this page-->
+  <script src="js/demo/datatables-demo.js"></script>
   <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-bar-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 
