@@ -18,23 +18,23 @@
  */
  
 // DB table to use
-$table = 'Proj_DEVICE';
+$table = 'DEVICES';
  
 // Table's primary key
-$primaryKey = 'SerialNum';
+$primaryKey = 'ser';
  
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array( 'db' => 'Category', 'dt' => 0 ),
-    array( 'db' => 'Manufacturer',  'dt' => 1 ),
-    array( 'db' => 'ModelNum',  'dt' => 2 ),
-    array( 'db' => 'SerialNum',    'dt' => 3 ),
-    array( 'db' => 'LastChecked',     'dt' => 4),
-    array( 'db' => 'Location',     'dt' => 5),
-    array ( 'db' => 'Surplus', 'dt' => 6)
+    array( 'db' => 'cat', 'dt' => 0 ),
+    array( 'db' => 'man',  'dt' => 1 ),
+    array( 'db' => 'model',  'dt' => 2 ),
+    array( 'db' => 'ser',    'dt' => 3 ),
+    array( 'db' => 'lc',     'dt' => 4),
+    array( 'db' => 'loc',     'dt' => 5),
+    array ( 'db' => 'sur', 'dt' => 6)
 );
  
 // SQL server connection information

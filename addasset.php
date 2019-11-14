@@ -4,10 +4,11 @@
 		Header("Location:login.php");
 	include 'header.php';
 
+	require_once "config.php";
+
 
 	if (isset($_POST['submit'])) {
 		echo "<a style='color:white'>Successfully added!</a>";
-		require_once "config.php";
 
 		$stmt = $con->prepare("insert into Proj_DEVICE (SerialNum, Category, Manufacturer, ModelNum, Location, User, Network, PurchaseDate, WarrantyDate, LastChecked, Surplus, Notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		$stmt->execute(array($_POST['SerialNum'], $_POST['Category'], $_POST['Manufacturer'], $_POST['model'], 1, 1, 1, $_POST['PurchaseDate'], 0, $_POST['PurchaseDate'], 0, $_POST['notes']));
@@ -35,12 +36,17 @@
       <label for="Category"><font color="white">Category</font></label>
 			<select class="custom-select mr-sm-2" id="Category" name="Category">
 				<option selected>Choose...</option>
-				<option value="2">Laptop</option>
-				<option value="3">Tablet</option>
-				<option value="5">Printer</option>
-				<option value="1">Desktop</option>
-				<option value="4">Camera</option>
-				<option value="6">Video Conferencing</option>
+				<?php
+					$stmt = $con->prepare("select CID as cid, Name as name from Proj_CATEGORY");
+					$stmt->execute();
+					
+					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+						$id = $row->cid;
+						$name = $row->name;
+
+						echo "<option value='" . $id . "'>" . $name . "</option>";
+					}
+				?>
 			</select>
       <div class="valid-feedback">
         Looks good!
@@ -49,18 +55,19 @@
 
     <div class="col-md-2 mb-3">
       <label for="Manufacturer"><font color="white">Manufacturer</font></label>
-			<select class="custom-select mr-sm-2" id="Manufacturer" name="Manufacturer">
+			<select class="custom-select mr-sm-2" id="Manufacturer" name="Manufacturer" required>
 				<option selected>Choose...</option>
-				<option value="1">Apple</option>
-				<option value="4">Dell</option>
-				<option value="2">Canon</option>
-				<option value="5">HP</option>
-				<option value="7">Samsung</option>
-				<option value="8">Lenovo</option>
-				<option value="9">Microsoft</option>
-				<option value="3">Cisco</option>
-				<option value="6">Logitech</option>
-				<option value="10">Ricoh</option>
+				<?php
+					$stmt = $con->prepare("select MID as cid, Name as name from Proj_MANUFACTURER");
+					$stmt->execute();
+					
+					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+						$id = $row->cid;
+						$name = $row->name;
+
+						echo "<option value='" . $id . "'>" . $name . "</option>";
+					}
+				?>
 			</select>
       <div class="valid-feedback">
         Looks good!
@@ -106,10 +113,20 @@
 
 	     <div class="col-md-6 mb-3">
 		   <label for="Location"><font color="white">Location</font></label>
-		    <input type="text" class="form-control" id="location" placeholder="Choose the location of this new device..." required>
-		    <div class="invalid-feedback">
-		 	         Provide last name .
-		 	       </div>
+		   <select class="custom-select mr-sm-2" id="Location" name="Location" required>
+				<option selected>Choose...</option>
+				<?php
+					$stmt = $con->prepare("select LID as lid, Name as name from Proj_LOCATION");
+					$stmt->execute();
+					
+					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+						$id = $row->lid;
+						$name = $row->name;
+
+						echo "<option value='" . $id . "'>" . $name . "</option>";
+					}
+				?>
+			</select>
 		 	     </div>
 				 </div>
 				<div class="form-row">
