@@ -49,7 +49,7 @@ session_start();
         </ol>
 
 
-        <!-- DataTables Example -->
+                <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
@@ -74,28 +74,88 @@ session_start();
                 <tbody>
                   <tr>
                     <td>Category</td>
-                    <td><form action="tables.php" method="post"><input type="text" name="addcateg"></td>
- 		    <td><input type="submit" value="Submit" name="cat"></form></td>
+                    <td><select class="custom-select mr-sm-2" id="Category" name="Category">
+				<option selected>Choose...</option>
+				<?php
+					$stmt = $con->prepare("select CID as cid, Name as name from Proj_CATEGORY");
+					$stmt->execute();
+					
+					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+						$id = $row->cid;
+						$name = $row->name;
+						echo "<option value='" . $id . "'>" . $name . "</option>";
+					}
+				?>
+			</select>			<form action="/"><input type="text" name="addcateg"></td>
+ 		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                   <tr>
                     <td>Manufacturer</td>
-		    <td><form action="tables.php" method="post"><input type="text" name="addmanu"></td>
- 		    <td><input type="submit" value="Submit" name="manu"></form></td>
+		    <td><select class="custom-select mr-sm-2" id="Manufacturer" name="Manufacturer">
+				<option selected>Choose...</option>
+				<?php
+					$stmt = $con->prepare("select MID as mid, Name as name from Proj_MANUFACTURER");
+					$stmt->execute();
+					
+					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+						$id = $row->mid;
+						$name = $row->name;
+						echo "<option value='" . $id . "'>" . $name . "</option>";
+					}
+				?>
+				<form action="/"><input type="text" name="addmanu"></td>
+ 		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                   <tr>
                     <td>Network</td>
-		    <td><form action="tables.php" method="post"><input type="text" name="addnetwork"></td>
- 		    <td><input type="submit" value="Submit" name="network"></form></td>
+		    <td><select class="custom-select mr-sm-2" id="Category" name="Category">
+				<option selected>Choose...</option>
+				<?php
+					$stmt = $con->prepare("select NID as nid, Name as name from Proj_NETWORK");
+					$stmt->execute();
+					
+					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+						$id = $row->nid;
+						$name = $row->name;
+						echo "<option value='" . $id . "'>" . $name . "</option>";
+					}
+				?>
+				<form action="/"><input type="text" name="addnetwork"></td>
+ 		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                   <tr>
                     <td>User</td>
-		    <td><form action="tables.php" method="post"><input type="text" name="addpersonfirst" placeholder="First Name"><input type="text" name="addpersonlast" placeholder="Last Name"></td>
- 		    <td><input type="submit" value="Submit" name="person"></form></td>
+		    <td><select class="custom-select mr-sm-2" id="Category" name="Category">
+				<option selected>Choose...</option>
+				<?php
+					$stmt = $con->prepare("select UID as uid, Name as name from Proj_USER");
+					$stmt->execute();
+					
+					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+						$id = $row->uid;
+						$name = $row->name;
+						echo "<option value='" . $id . "'>" . $name . "</option>";
+					}
+				?>
+				<form action="/"><input type="text" name="addperson"></td>
+ 		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                   <tr>
                     <td>Location</td>
-		    <td><form action="tables.php" method="post"><input type="text" name="addroom"></td>
- 		    <td><input type="submit" value="Submit" name=room></form></td>
+		    <td><select class="custom-select mr-sm-2" id="Location" name="Location" required>
+				<option selected>Choose...</option>
+				<?php
+					$stmt = $con->prepare("select LID as lid, Name as name from Proj_LOCATION");
+					$stmt->execute();
+					
+					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+						$id = $row->lid;
+						$name = $row->name;
+						echo "<option value='" . $id . "'>" . $name . "</option>";
+					}
+				?>
+			</select><form action="/"><input type="text" name="addroom"></td>
+ 		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                 </tbody>
               </table>
