@@ -76,6 +76,7 @@ session_start();
                     <td>Category</td>
                     <td><select class="custom-select mr-sm-2" id="Category" name="Category">
 				<option selected>Choose...</option>
+			    	<option value="NewCategory">New...</option>
 				<?php
 					$stmt = $con->prepare("select CID as cid, Name as name from Proj_CATEGORY");
 					$stmt->execute();
@@ -93,6 +94,7 @@ session_start();
                     <td>Manufacturer</td>
 		    <td><select class="custom-select mr-sm-2" id="Manufacturer" name="Manufacturer">
 				<option selected>Choose...</option>
+			    	<option value="NewManufacturer">New...</option>
 				<?php
 					$stmt = $con->prepare("select MID as mid, Name as name from Proj_MANUFACTURER");
 					$stmt->execute();
@@ -110,6 +112,7 @@ session_start();
                     <td>Network</td>
 		    <td><select class="custom-select mr-sm-2" id="Category" name="Category">
 				<option selected>Choose...</option>
+			    	<option value="NewNetwork">New...</option>
 				<?php
 					$stmt = $con->prepare("select NID as nid, Name as name from Proj_NETWORK");
 					$stmt->execute();
@@ -127,6 +130,7 @@ session_start();
                     <td>User</td>
 		    <td><select class="custom-select mr-sm-2" id="Category" name="Category">
 				<option selected>Choose...</option>
+			    	<option value="NewUser">New...</option>
 				<?php
 					$stmt = $con->prepare("select UID as uid, Name as name from Proj_USER");
 					$stmt->execute();
@@ -144,6 +148,7 @@ session_start();
                     <td>Location</td>
 		    <td><select class="custom-select mr-sm-2" id="Location" name="Location" required>
 				<option selected>Choose...</option>
+			    	<option value="NewLocation">New...</option>
 				<?php
 					$stmt = $con->prepare("select LID as lid, Name as name from Proj_LOCATION");
 					$stmt->execute();
