@@ -39,7 +39,7 @@
 				<?php
 					$stmt = $con->prepare("select CID as cid, Name as name from Proj_CATEGORY");
 					$stmt->execute();
-					
+
 					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
 						$id = $row->cid;
 						$name = $row->name;
@@ -60,7 +60,7 @@
 				<?php
 					$stmt = $con->prepare("select MID as cid, Name as name from Proj_MANUFACTURER");
 					$stmt->execute();
-					
+
 					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
 						$id = $row->cid;
 						$name = $row->name;
@@ -95,30 +95,34 @@
       <input type="date" name="PurchaseDate" id="PurchaseDate" name="PurchaseDate">
 		</div>
 	</div>
-		<div class="form-row">
-	     <div class="col-md-4 mb-3">
-	       <label for="Firstname"><font color="white">First name</font></label>
-	       <input type="text" class="form-control" id="firstname" placeholder="Enter users first name..." required>
-	       <div class="invalid-feedback">
-	         Provide first name .
-	       </div>
-	     </div>
-	    <div class="col-md-4 mb-3">
-	 	   <label for="Lastname"><font color="white">Last name</font></label>
-	 	    <input type="text" class="form-control" id="lastname" placeholder="Enter users last name..." required>
-	 	    <div class="invalid-feedback">
-	 	        Provide last name .
-	 	       </div>
-	 	     </div>
 
-	     <div class="col-md-6 mb-3">
+	<div class="col-md-4 mb-3">
+	<label for="User"><font color="white">User</font></label>
+	<select class="custom-select mr-sm-2" id="User" name="User" required>
+	 <option selected>Choose...</option>
+	 <?php
+		 $stmt = $con->prepare("select UID as uid, FirstName as first, LastName as last from Proj_USER");
+		 $stmt->execute();
+
+		 while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+			 $id = $row->uid;
+			 $first = $row->first;
+			 $last = $row->last;
+
+			 echo "<option value='" . $id . "'>" . $first . " " . $last . "</option>";
+		 }
+	 ?>
+ </select>
+			</div>
+
+	     <div class="col-md-4 mb-3">
 		   <label for="Location"><font color="white">Location</font></label>
 		   <select class="custom-select mr-sm-2" id="Location" name="Location" required>
 				<option selected>Choose...</option>
 				<?php
 					$stmt = $con->prepare("select LID as lid, Name as name from Proj_LOCATION");
 					$stmt->execute();
-					
+
 					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
 						$id = $row->lid;
 						$name = $row->name;
@@ -128,13 +132,21 @@
 				?>
 			</select>
 		 	     </div>
-				 </div>
+					<div class="col-md-3 mb-3">
+					 <div class="form-row">
+				<label for="Warranty"><font color="white">Warranty Date</font></label>
+				<div class="col-10">
+				<input class="form-control" type="number" value="0" id="Warranty"></textarea>
+			 </div>
+		 </div>
+	 </div>
 				<div class="form-row">
 				 <div class="form-group">
     <label for="notes"><font color="white">Additional notes</font></label>
     <textarea class="form-control" id="notes" name="notes" rows="4"></textarea>
   	</div>
 	</div>
+</div>
 	<input type='submit' id='submit' name="submit" />
 </form>
 
