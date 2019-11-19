@@ -26,107 +26,16 @@
     table.draw();
   }
 
-  function findCategory(catID, serial) {
-    var xmlhttp;
-      if (window.XMLHttpRequest)
-      {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-      }
-      else
-      {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-      }
-
-      var cat = "";
-
-      xmlhttp.open("GET","findcat.php?q="+catID,true);
-    xmlhttp.send();
-
-      xmlhttp.onreadystatechange=function()
-      {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200)
-        {
-          var id = "CAT" + serial;
-          document.getElementById(id).innerHTML=xmlhttp.responseText;
-        }
-      }
-  }
-
-  function joinTable() {
-    var xmlhttp;
-      if (window.XMLHttpRequest)
-      {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-      }
-      else
-      {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-      }
-
-      xmlhttp.open("GET","join.php",true);
-    xmlhttp.send();
-
-    console.log(xmlhttp);
-
-    return xmlhttp.responseText;
-  }
-
-  function findManufacturer(manID, serial) {
-    var xmlhttp;
-      if (window.XMLHttpRequest)
-      {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-      }
-      else
-      {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-      }
-
-      var cat = "";
-
-      xmlhttp.open("GET","findman.php?q="+manID,true);
-    xmlhttp.send();
-
-      xmlhttp.onreadystatechange=function()
-      {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200)
-        {
-          var id = "MAN" + serial;
-          document.getElementById(id).innerHTML=xmlhttp.responseText;
-        }
-      }
-  }
-
-  function findLocation(locID, serial) {
-    var xmlhttp;
-      if (window.XMLHttpRequest)
-      {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-      }
-      else
-      {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-      }
-
-      var cat = "";
-
-      xmlhttp.open("GET","findloc.php?q="+locID,true);
-      console.log(serial);
-    xmlhttp.send();
-
-      xmlhttp.onreadystatechange=function()
-      {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200)
-        {
-          var id = "LOC" + serial;
-          document.getElementById(id).innerHTML=xmlhttp.responseText;
-        }
-      }
-  }
-
     $(document).ready(function() {
       table = $('#dataTable').DataTable( {
         "columnDefs": [
+          {
+            "targets": 3,
+            "render": function ( data, type, row, meta ) {
+              //var str = "<a href='change.php?a="
+              return '<a href="change.php?a=' + data + '">' + data + '</a>';
+            }
+          },
           {
             "targets": 6,
             "data": null,
