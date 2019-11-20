@@ -24,7 +24,7 @@
   <script>
     var table;
 
-    function verify(serial) {
+    function activate(serial) {
       var xmlhttp;
       if (window.XMLHttpRequest)
       {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -35,7 +35,7 @@
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
       }
 
-      xmlhttp.open("GET","verify.php?q="+serial,true);
+      xmlhttp.open("GET","activate.php?q="+serial,true);
     xmlhttp.send();
 
     table.draw();
@@ -52,11 +52,11 @@
             }
           },
           {
-            "targets": 6,
+            "targets": 4,
             "data": null,
             "defaultContent": "",
             "render": function ( data, type, row, meta ) {
-              return '<button id="' + data[3] + '" onClick="verify(this.id)">Verify</button>';
+              return '<button id="' + data[3] + '" onClick="activate(this.id)">Reactivate</button>';
             }
           }
         ],
@@ -64,8 +64,8 @@
         "processing": true,
         "serverSide": true,
 
-        "ajax": "./tables_server_proc.php",
-        "order": [4, 'asc']
+        "ajax": "./inactive_server_proc.php",
+        "order": [3, 'asc']
       } );
     } );
   </script>
@@ -98,9 +98,7 @@
                     <th>Manufacturer</th>
                     <th>Model</th>
                     <th>Serial Number</th>
-                    <th>Date Last Verified</th>
-                    <th>Room Number</th>
-                    <th>Verify</th>
+                    <th>Reactivate</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -109,9 +107,7 @@
                     <th>Manufacturer</th>
                     <th>Model</th>
                     <th>Serial Number</th>
-                    <th>Date Last Verified</th>
-                    <th>Room Number</th>
-                    <th>Verify</th>
+                    <th>Reactivate</th>
                   </tr>
                 </tfoot>
               </table>

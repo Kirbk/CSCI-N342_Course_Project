@@ -7,6 +7,8 @@ session_start();
   require_once "config.php";
   
   if (isset($_POST['cat'])) {
+
+
     $stmt = $con->prepare("insert into Proj_CATEGORY (CID, Name) VALUES (NULL, ?)");
     $stmt->execute(array($_POST['addcateg']));
     echo "<a style='color:white'>Successfully added!</a>";
@@ -87,7 +89,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-			</select>			<form action="/"><input type="text" name="addcateg"></td>
+			</select>			<form action=""><input type="text" name="addcateg" required></td>
  		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                   <tr>
@@ -105,7 +107,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-				<form action="/"><input type="text" name="addmanu"></td>
+				<form action="/"><input type="text" name="addmanu" required></td>
  		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                   <tr>
@@ -123,7 +125,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-				<form action="/"><input type="text" name="addnetwork"></td>
+				<form action="/"><input type="text" name="addnetwork" required></td>
  		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                   <tr>
@@ -141,7 +143,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-				<form action="/"><input type="text" name="addperson"></td>
+				<form action="/"><input type="text" name="addperson" required></td>
  		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                   <tr>
@@ -159,7 +161,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-			</select><form action="/"><input type="text" name="addroom"></td>
+			</select><form action="/"><input type="text" name="addroom" required></td>
  		    <td><input type="submit" value="Submit"></form></td>
                   </tr>
                 </tbody>

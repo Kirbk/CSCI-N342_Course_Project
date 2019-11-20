@@ -6,13 +6,35 @@
 
 	require_once "config.php";
 
-
 	if (isset($_POST['submit'])) {
-		echo "<a style='color:white'>Successfully added!</a>";
+		echo "<a style='color:white'>Successfully updated!</a><br /><br />";
 
-		$stmt = $con->prepare("insert into Proj_DEVICE (SerialNum, Category, Manufacturer, ModelNum, Location, User, Network, PurchaseDate, WarrantyDate, LastChecked, Surplus, Notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-		$stmt->execute(array($_POST['SerialNum'], $_POST['Category'], $_POST['Manufacturer'], $_POST['model'], 1, 1, 1, $_POST['PurchaseDate'], 0, $_POST['PurchaseDate'], 0, $_POST['notes']));
+		$stmt = $con->prepare("update Proj_DEVICE set SerialNum = ?, Category = ?, Manufacturer = ?, ModelNum = ?, Location = ?, User = ?, Network = ?, PurchaseDate = ?, WarrantyDate = ?, LastChecked = ?, Surplus = ?, Notes = ? where SerialNum = ?");
+		$stmt->execute(array($_POST['SerialNum'], $_POST['Category'], $_POST['Manufacturer'], $_POST['model'], $_POST['Location'], $_POST['User'], 1, $_POST['PurchaseDate'], $_POST['Warranty'], $_POST['PurchaseDate'], 0, $_POST['notes'], $_GET['a']));
 	}
+
+	$serialnum = "";
+	if (isset($_POST['SerialNum'])) {
+		$serialnum = $_POST['SerialNum'];
+	}
+	else {
+		$serialnum = $_GET['a'];
+	}
+
+	$statement = $con->prepare("SELECT * FROM `Proj_DEVICE` where SerialNum = ?");
+	$statement->execute(array($serialnum));
+
+	$row = $statement->fetch(PDO::FETCH_OBJ);
+
+	$category = $row->Category;
+	$manufacturer = $row->Manufacturer;
+	$model = $row->ModelNum;
+	$serial = $row->SerialNum;
+	$purchasedate = $row->PurchaseDate;
+	$user = $row->User;
+	$location = $row->Location;
+	$warranty = $row->WarrantyDate;
+	$notes = $row->Notes;
 ?>
 
     <div id="content-wrapper">
@@ -30,12 +52,11 @@
 
         <!-- DataTables Example -->
 
-	<form class="addasset" action="addasset.php" method="post">
+	<form class="addasset" action="change.php?a=<?php echo $serialnum; ?>" method="post">
   <div class="form-row">
     <div class="col-md-2 mb-3">
       <label for="Category"><font color="white">Category</font></label>
 			<select class="custom-select mr-sm-2" id="Category" name="Category">
-				<option selected>Choose...</option>
 				<?php
 					$stmt = $con->prepare("select CID as cid, Name as name from Proj_CATEGORY");
 					$stmt->execute();
@@ -44,7 +65,12 @@
 						$id = $row->cid;
 						$name = $row->name;
 
-						echo "<option value='" . $id . "'>" . $name . "</option>";
+						if ($id == $category) {
+							echo "<option value='" . $id . "' selected>" . $name . "</option>";
+						}
+						else {
+							echo "<option value='" . $id . "'>" . $name . "</option>";
+						}
 					}
 				?>
 			</select>
@@ -56,7 +82,6 @@
     <div class="col-md-2 mb-3">
       <label for="Manufacturer"><font color="white">Manufacturer</font></label>
 			<select class="custom-select mr-sm-2" id="Manufacturer" name="Manufacturer" required>
-				<option selected>Choose...</option>
 				<?php
 					$stmt = $con->prepare("select MID as cid, Name as name from Proj_MANUFACTURER");
 					$stmt->execute();
@@ -65,7 +90,12 @@
 						$id = $row->cid;
 						$name = $row->name;
 
-						echo "<option value='" . $id . "'>" . $name . "</option>";
+						if ($id == $manufacturer) {
+							echo "<option value='" . $id . "' selected>" . $name . "</option>";
+						}
+						else {
+							echo "<option value='" . $id . "'>" . $name . "</option>";
+						}
 					}
 				?>
 			</select>
@@ -76,7 +106,7 @@
 
 	<div class="col-md-4 mb-3">
 		<label for="Model"><font color="white">Model</font></label>
-		<input type="text" class="form-control" id="model" name="model" placeholder="Enter the model of the device..." required>
+		<input type="text" class="form-control" id="model" name="model" value="<?php echo $model; ?>" placeholder="Enter the model of the device..." required>
 		<div class="invalid-feedback">
 			Please provide model infomation.
 				</div>
@@ -85,14 +115,14 @@
   	<div class="form-row">
 		<div class="col-md-5 mb-3">
 			<label for="SerialNum"><font color="white">Serial Number</font></label>
-			<input type="text" class="form-control" id="SerialNum" name="SerialNum" placeholder="Enter the serial number of the device..." required>
+			<input type="text" class="form-control" id="SerialNum" name="SerialNum" value="<?php echo $serial; ?>" placeholder="Enter the serial number of the device..." required>
 			<div class="invalid-feedback">
 					Provide models serial number.
 				</div>
 			</div>
 			<div class="col-md-2 mb-3">
 			<label for="PurchaseDate"><font color="white">Purchase Date</font></label>
-      <input type="date" name="PurchaseDate" id="PurchaseDate" name="PurchaseDate">
+      <input type="date" name="PurchaseDate" id="PurchaseDate" name="PurchaseDate" value="<?php echo $purchasedate; ?>">
 		</div>
 	</div>
 
@@ -109,7 +139,12 @@
 			 $first = $row->first;
 			 $last = $row->last;
 
-			 echo "<option value='" . $id . "'>" . $first . " " . $last . "</option>";
+			if ($id == $user) {
+				echo "<option value='" . $id . "' selected>" . $first . " " . $last . "</option>";
+			}
+			else {
+				echo "<option value='" . $id . "'>" . $first . " " . $last . "</option>";
+			}
 		 }
 	 ?>
  </select>
@@ -127,7 +162,12 @@
 						$id = $row->lid;
 						$name = $row->name;
 
-						echo "<option value='" . $id . "'>" . $name . "</option>";
+						if ($id == $location) {
+							echo "<option value='" . $id . "' selected>" . $name . "</option>";
+						}
+						else {
+							echo "<option value='" . $id . "'>" . $name . "</option>";
+						}
 					}
 				?>
 			</select>
@@ -136,14 +176,14 @@
 					 <div class="form-row">
 				<label for="Warranty"><font color="white">Warranty Date</font></label>
 				<div class="col-10">
-				<input class="form-control" type="number" value="0" id="Warranty"></textarea>
+				<input type="date" name="Warranty" id="Warranty" name="Warranty" value="<?php echo $warranty; ?>">
 			 </div>
 		 </div>
 	 </div>
 				<div class="form-row">
 				 <div class="form-group">
     <label for="notes"><font color="white">Additional notes</font></label>
-    <textarea class="form-control" id="notes" name="notes" rows="4"></textarea>
+    <textarea class="form-control" id="notes" name="notes" rows="4"><?php echo $notes; ?></textarea>
   	</div>
 	</div>
 </div>

@@ -8,10 +8,10 @@
 
 
 	if (isset($_POST['submit'])) {
-		echo "<a style='color:white'>Successfully added!</a>";
+		echo "<a style='color:white'>Successfully added!</a><br />";
 
 		$stmt = $con->prepare("insert into Proj_DEVICE (SerialNum, Category, Manufacturer, ModelNum, Location, User, Network, PurchaseDate, WarrantyDate, LastChecked, Surplus, Notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-		$stmt->execute(array($_POST['SerialNum'], $_POST['Category'], $_POST['Manufacturer'], $_POST['model'], 1, 1, 1, $_POST['PurchaseDate'], 0, $_POST['PurchaseDate'], 0, $_POST['notes']));
+		$stmt->execute(array($_POST['SerialNum'], $_POST['Category'], $_POST['Manufacturer'], $_POST['model'], $_POST['Location'], $_POST['User'], 1, $_POST['PurchaseDate'], 0, $_POST['PurchaseDate'], 0, $_POST['notes']));
 	}
 ?>
 
