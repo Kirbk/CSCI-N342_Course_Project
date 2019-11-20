@@ -175,10 +175,10 @@
   </div>
 </div>
 
-				<div class="form-row">
-				 <div class="form-group">
+<div class="form-row">
+		<div class="col-md-3 mb-3">
     <label for="notes"><font color="white">Additional notes</font></label>
-    <textarea class="form-control" id="notes" name="notes" rows="4"><?php echo $notes; ?></textarea>
+    <textarea class="form-control" id="notes" name="notes" rows="4"></textarea>
   	</div>
 	</div>
   <div class="form-check">
