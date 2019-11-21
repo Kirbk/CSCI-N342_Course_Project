@@ -1,8 +1,31 @@
 <?php
   session_start();
+
+  require_once "config.php";
+  
+  if (isset($_GET['export'])) {
+    $list = array();
+    $stmt = $con->prepare("select cat, man, model, ser, lc, loc, sur from DEVICES");
+    $stmt->execute();
+    array_push($list, array("Category", "Manufacturer", "Model Number", "Serial Number", "Last Checked", "Location", "Surplus"));
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      array_push($list, array_values($row));
+    }
+
+    $fp = fopen("php://output", 'w');
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="export.csv"');
+    foreach($list as $ferow) {
+      fputcsv($fp, $ferow);
+    }
+
+    fclose($fp);
+    exit();
+  }
+
   if ($_SESSION['aid'] == NULL)
     Header ("Location:login.php");
-	include 'header.php';
+  include 'header.php';
 ?>
 
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
@@ -143,6 +166,7 @@
             <i class="fas fa-table"></i>
             Data Table Example</div>
           <div class="card-body">
+          <p class="text-center"><a href='charts.php?export=1'>Export data to csv</a></p>
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
