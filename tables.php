@@ -3,7 +3,6 @@ session_start();
   if ($_SESSION['aid'] == NULL)
     Header ("Location:login.php");
   include 'header.php';
-
   require_once "config.php";
   
   if (isset($_POST['cat'])) {
@@ -19,7 +18,6 @@ session_start();
     }
     
   }
-
   if (isset($_POST['manu'])) {
     if (strcmp($_POST['Manufacturer'], "NewManufacturer") == 0) {
       $stmt = $con->prepare("insert into Proj_MANUFACTURER (MID, Name) VALUES (NULL, ?)");
@@ -32,7 +30,6 @@ session_start();
       echo "<a style='color:white'>Successfully updated!</a>";
     }
   }
-
   if (isset($_POST['network'])) {
     if (strcmp($_POST['Network'], "NewNetwork") == 0) {
       $stmt = $con->prepare("insert into Proj_NETWORK (NID, Name) VALUES (NULL, ?)");
@@ -45,7 +42,6 @@ session_start();
       echo "<a style='color:white'>Successfully updated!</a>";
     }
   }
-
   if (isset($_POST['person'])) {
     if (strcmp($_POST['User'], "NewUser") == 0) {
       $stmt = $con->prepare("insert into Proj_USER (UID, FirstName, LastName) VALUES (NULL, ?, ?)");
@@ -58,7 +54,6 @@ session_start();
       echo "<a style='color:white'>Successfully updated!</a>";
     }
   }
-
   if (isset($_POST['room'])) {
     if (strcmp($_POST['Location'], "NewLocation") == 0) {
       $stmt = $con->prepare("insert into Proj_LOCATION (LID, NAME) VALUES (NULL, ?)");
@@ -122,7 +117,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-			</select><input type="text" name="addcateg" required></td>
+			</select><input type="text" name="addcateg" required><button type="reset" value="Reset">Delete</button></td>
  		    <td><input type="submit" value="Submit" name="cat" id="cat"></form></td>
                   </tr>
                   <tr>
@@ -139,7 +134,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-				<input type="text" name="addmanu" required></td>
+				<input type="text" name="addmanu" required><button type="reset" value="Reset">Delete</button></td>
  		    <td><input type="submit" value="Submit" name="manu" id="manu"></form></td>
                   </tr>
                   <tr>
@@ -156,7 +151,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-				<form action="" method="post"><input type="text" name="addnetwork" required></td>
+				<form action="" method="post"><input type="text" name="addnetwork" required><button type="reset" value="Reset">Delete</button></td>
  		    <td><input type="submit" value="Submit" name="network" id="network"></form></td>
                   </tr>
                   <tr>
@@ -174,7 +169,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $first . " " . $last . "</option>";
 					}
 				?>
-				<input type="text" name="addpersonfirst" required><input type="text" name="addpersonlast" required></td>
+				<input type="text" name="addpersonfirst" required><input type="text" name="addpersonlast" required><button type="reset" value="Reset">Delete</button></td>
  		    <td><input type="submit" value="Submit" id="person" name="person"></form></td>
                   </tr>
                   <tr>
@@ -191,7 +186,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-			</select><input type="text" name="addroom" required></td>
+			</select><input type="text" name="addroom" required><button type="reset" value="Reset">Delete</button></td>
  		    <td><input type="submit" value="Submit" name="room" id="room"></form></td>
                   </tr>
                 </tbody>
@@ -208,7 +203,7 @@ session_start();
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright Â© Your Website 2019</span>
+            <span>Copyright © Your Website 2019</span>
           </div>
         </div>
       </footer>
@@ -231,7 +226,7 @@ session_start();
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">Ã—</span>
+            <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
