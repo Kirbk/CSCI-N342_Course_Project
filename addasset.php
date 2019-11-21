@@ -5,9 +5,12 @@
 	include 'header.php';
 	require_once "config.php";
 	if (isset($_POST['submit'])) {
+		$date = new DateTime($_POST['PurchaseDate']);
+		$date->modify("+" . $_POST['Warranty'] . " year");
+
 		echo "<a style='color:white'>Successfully added!</a><br />";
 		$stmt = $con->prepare("insert into Proj_DEVICE (SerialNum, Category, Manufacturer, ModelNum, Location, User, Network, PurchaseDate, WarrantyDate, LastChecked, Surplus, Notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-		$stmt->execute(array($_POST['SerialNum'], $_POST['Category'], $_POST['Manufacturer'], $_POST['model'], $_POST['Location'], $_POST['User'], 1, $_POST['PurchaseDate'], 0, $_POST['PurchaseDate'], 0, $_POST['notes']));
+		$stmt->execute(array($_POST['SerialNum'], $_POST['Category'], $_POST['Manufacturer'], $_POST['model'], $_POST['Location'], $_POST['User'], $_POST['Network'], $_POST['PurchaseDate'], $date->format("Y-m-d"), $_POST['PurchaseDate'], $_POST['Surplus'], $_POST['notes']));
 	}
 ?>
 
@@ -126,7 +129,7 @@
 					 <div class="form-row">
 				<label for="Warranty"><font color="white">Warranty Date</font></label>
 				<div class="col-10">
-				<input class="form-control" type="number" value="0" id="Warranty"></textarea>
+				<input class="form-control" type="number" value="0" id="Warranty" name="Warranty"></textarea>
 			 </div>
 		 </div>
 	 </div>
@@ -153,7 +156,7 @@
   	</div>
 </div>
 	<div class="form-check">
-    <input type="checkbox" class="form-check-input" id="Check">
+    <input type="checkbox" class="form-check-input" id="Surplus" name="Surplus" value="1">
     <label class="form-check-label" for="Check"><font color="white">Surplus</font></label>
   </div>
 	<input type='submit' id='submit' name="submit" />

@@ -4,6 +4,13 @@
 		Header("Location:login.php");
 	include 'header.php';
 	require_once "config.php";
+
+	if (isset($_POST['deactivate'])) {
+		$statement = $con->prepare("update Proj_DEVICE set Inactive = 1 where SerialNum = ?");
+		$statement->execute(array($_GET['a']));
+		echo "Device deactivated!"
+	}
+
 	if (isset($_POST['submit'])) {
 		echo "<a style='color:white'>Successfully updated!</a><br /><br />";
 		$stmt = $con->prepare("update Proj_DEVICE set SerialNum = ?, Category = ?, Manufacturer = ?, ModelNum = ?, Location = ?, User = ?, Network = ?, PurchaseDate = ?, WarrantyDate = ?, LastChecked = ?, Surplus = ?, Notes = ? where SerialNum = ?");
@@ -25,6 +32,7 @@
 	$serial = $row->SerialNum;
 	$purchasedate = $row->PurchaseDate;
 	$user = $row->User;
+	$network = $row->Network;
 	$location = $row->Location;
 	$warranty = $row->WarrantyDate;
 	$notes = $row->Notes;
@@ -127,7 +135,13 @@
 			 $id = $row->uid;
 			 $first = $row->first;
 			 $last = $row->last;
-			 echo "<option value='" . $id . "'>" . $first . " " . $last . "</option>";
+
+			if ($id == $user) {
+				echo "<option value='" . $id . "' selected>" . $first . " " . $last . "</option>";
+			}
+			else {
+				 echo "<option value='" . $id . "'>" . $first . " " . $last . "</option>";
+			}
 		 }
 	 ?>
  </select>
@@ -143,7 +157,12 @@
 					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
 						$id = $row->lid;
 						$name = $row->name;
-						echo "<option value='" . $id . "'>" . $name . "</option>";
+						if ($id == $location) {
+							echo "<option value='" . $id . "' selected>" . $name . "</option>";
+						}
+						else {
+							echo "<option value='" . $id . "'>" . $name . "</option>";
+						}
 					}
 				?>
 			</select>
@@ -167,8 +186,14 @@
  	 	 $stmt->execute();
  	 	 while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
  	 		 $id = $row->nid;
- 	 		 $name = $row->name;
- 	 		 echo "<option value='" . $id . "'>" . $name . "</option>";
+			$name = $row->name;
+			   
+			if ($id == $network) {
+				echo "<option value='" . $id . "' selected>" . $name . "</option>";
+			}
+			else {
+				echo "<option value='" . $id . "'>" . $name . "</option>";
+			}
  	 	 }
  	  ?>
  	 </select>
@@ -178,7 +203,7 @@
 <div class="form-row">
 		<div class="col-md-3 mb-3">
     <label for="notes"><font color="white">Additional notes</font></label>
-    <textarea class="form-control" id="notes" name="notes" rows="4"></textarea>
+    <textarea class="form-control" id="notes" name="notes" rows="4"><?php echo $notes; ?></textarea>
   	</div>
 	</div>
   <div class="form-check">
@@ -186,8 +211,8 @@
   <label class="form-check-label" for="Check"><font color="white">Surplus</font></label>
 </div>
 	<input type='submit' id='submit' name="submit" />
-  <button type="button" class="btn btn-danger">Deactivate</button>
-</form>
+	</form>
+  	<form action="change.php?a=<?php echo $serialnum; ?>" method="post"><input type="submit" class="btn btn-danger" name="deactivate" id="deactivate" value="Deactivate"></form>
 
   <!-- /#wrapper -->
 
