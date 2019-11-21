@@ -8,9 +8,12 @@
 		$date = new DateTime($_POST['PurchaseDate']);
 		$date->modify("+" . $_POST['Warranty'] . " year");
 
+		$surplus = 0;
+		if (isset($_POST['Surplus'])) $surplus = $_POST['Surplus'];
+		
 		echo "<a style='color:white'>Successfully added!</a><br />";
 		$stmt = $con->prepare("insert into Proj_DEVICE (SerialNum, Category, Manufacturer, ModelNum, Location, User, Network, PurchaseDate, WarrantyDate, LastChecked, Surplus, Notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-		$stmt->execute(array($_POST['SerialNum'], $_POST['Category'], $_POST['Manufacturer'], $_POST['model'], $_POST['Location'], $_POST['User'], $_POST['Network'], $_POST['PurchaseDate'], $date->format("Y-m-d"), $_POST['PurchaseDate'], $_POST['Surplus'], $_POST['notes']));
+		$stmt->execute(array($_POST['SerialNum'], $_POST['Category'], $_POST['Manufacturer'], $_POST['model'], $_POST['Location'], $_POST['User'], $_POST['Network'], $_POST['PurchaseDate'], $date->format("Y-m-d"), $_POST['PurchaseDate'], $surplus, $_POST['notes']));
 	}
 ?>
 
@@ -33,7 +36,7 @@
   <div class="form-row">
     <div class="col-md-2 mb-3">
       <label for="Category"><font color="white">Category</font></label>
-			<select class="custom-select mr-sm-2" id="Category" name="Category">
+			<select class="custom-select mr-sm-2" id="Category" name="Category" required>
 				<option selected>Choose...</option>
 				<?php
 					$stmt = $con->prepare("select CID as cid, Name as name from Proj_CATEGORY");
@@ -87,7 +90,7 @@
 			</div>
 			<div class="col-md-2 mb-3">
 			<label for="PurchaseDate"><font color="white">Purchase Date</font></label>
-      <input type="date" name="PurchaseDate" id="PurchaseDate" name="PurchaseDate">
+      <input type="date" name="PurchaseDate" id="PurchaseDate" name="PurchaseDate" required>
 		</div>
 	</div>
 <div class="form-row">

@@ -105,7 +105,7 @@ session_start();
                 <tbody>
                   <tr>
                     <td>Category</td>
-                    <td><form action="" method="post"><select class="custom-select mr-sm-2" id="Category" name="Category">
+                    <td><form action="" method="post"><select class="custom-select mr-sm-2" id="Category" name="Category" required>
 			    	<option value="NewCategory" selected>New...</option>
 				<?php
 					$stmt = $con->prepare("select CID as cid, Name as name from Proj_CATEGORY");
@@ -122,7 +122,7 @@ session_start();
                   </tr>
                   <tr>
                     <td>Manufacturer</td>
-		    <td><form action="" method="post"><select class="custom-select mr-sm-2" id="Manufacturer" name="Manufacturer">
+		    <td><form action="" method="post"><select class="custom-select mr-sm-2" id="Manufacturer" name="Manufacturer" required>
 			    	<option value="NewManufacturer" selected>New...</option>
 				<?php
 					$stmt = $con->prepare("select MID as mid, Name as name from Proj_MANUFACTURER");
@@ -139,7 +139,7 @@ session_start();
                   </tr>
                   <tr>
                     <td>Network</td>
-		    <td><form action="" method="post"><select class="custom-select mr-sm-2" id="Network" name="Network">
+		    <td><form action="" method="post"><select class="custom-select mr-sm-2" id="Network" name="Network" required>
 			    	<option value="NewNetwork" selected>New...</option>
 				<?php
 					$stmt = $con->prepare("select NID as nid, Name as name from Proj_NETWORK");
@@ -156,7 +156,7 @@ session_start();
                   </tr>
                   <tr>
                     <td>User</td>
-		    <td><form action="" method="post"><select class="custom-select mr-sm-2" id="User" name="User">
+		    <td><form action="" method="post"><select class="custom-select mr-sm-2" id="User" name="User" required>
 			    	<option value="NewUser" selected>New...</option>
 				<?php
 					$stmt = $con->prepare("select UID as uid, FirstName as first, LastName as last from Proj_USER");
@@ -203,7 +203,7 @@ session_start();
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
+            <span>Copyright ï¿½ Your Website 2019</span>
           </div>
         </div>
       </footer>
@@ -226,7 +226,7 @@ session_start();
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
+            <span aria-hidden="true">ï¿½</span>
           </button>
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>

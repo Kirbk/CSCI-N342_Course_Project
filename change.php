@@ -8,11 +8,15 @@
 	if (isset($_POST['deactivate'])) {
 		$statement = $con->prepare("update Proj_DEVICE set Inactive = 1 where SerialNum = ?");
 		$statement->execute(array($_GET['a']));
-		echo "Device deactivated!"
+		echo "<a style='color:white'>Device deactivated!</a><br /><br />";
 	}
 
 	if (isset($_POST['submit'])) {
 		echo "<a style='color:white'>Successfully updated!</a><br /><br />";
+
+		$surplus = 0;
+		if (isset($_POST['Surplus'])) $surplus = $_POST['Surplus'];
+
 		$stmt = $con->prepare("update Proj_DEVICE set SerialNum = ?, Category = ?, Manufacturer = ?, ModelNum = ?, Location = ?, User = ?, Network = ?, PurchaseDate = ?, WarrantyDate = ?, LastChecked = ?, Surplus = ?, Notes = ? where SerialNum = ?");
 		$stmt->execute(array($_POST['SerialNum'], $_POST['Category'], $_POST['Manufacturer'], $_POST['model'], $_POST['Location'], $_POST['User'], 1, $_POST['PurchaseDate'], $_POST['Warranty'], $_POST['PurchaseDate'], 0, $_POST['notes'], $_GET['a']));
 	}
@@ -119,7 +123,7 @@
 			</div>
 			<div class="col-md-2 mb-3">
 			<label for="PurchaseDate"><font color="white">Purchase Date</font></label>
-      <input type="date" name="PurchaseDate" id="PurchaseDate" name="PurchaseDate" value="<?php echo $purchasedate; ?>">
+      <input type="date" name="PurchaseDate" id="PurchaseDate" name="PurchaseDate" value="<?php echo $purchasedate; ?>" required>
 		</div>
 	</div>
 
@@ -171,7 +175,7 @@
 					 <div class="form-row">
 				<label for="Warranty"><font color="white">Warranty Date</font></label>
 				<div class="col-10">
-				<input type="date" name="Warranty" id="Warranty" name="Warranty" value="<?php echo $warranty; ?>">
+				<input type="date" name="Warranty" id="Warranty" name="Warranty" value="<?php echo $warranty; ?>" required>
 			 </div>
 		 </div>
 	 </div>
@@ -207,7 +211,7 @@
   	</div>
 	</div>
   <div class="form-check">
-  <input type="checkbox" class="form-check-input" id="Check">
+  <input type="checkbox" class="form-check-input" id="Surplus" name="Surplus" value="1">
   <label class="form-check-label" for="Check"><font color="white">Surplus</font></label>
 </div>
 	<input type='submit' id='submit' name="submit" />

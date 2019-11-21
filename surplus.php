@@ -86,7 +86,7 @@
             <i class="fas fa-table"></i>
             Assets</div>
           <div class="card-body">
-          <p class="text-center">There are <?php echo "<a href='verify.php'>" . $active; ?> active</a> devices, <?php echo "<a href='inactive.php'>" . $inactive;?> inactive devices</a>, and <?php echo "<a href='surplus.php'>" . $surplus ?> surplused</a> devices.</p>
+          <p class="text-center">There are <?php echo "<a href='index.php'>" . $active; ?> active</a> devices, <?php echo "<a href='inactive.php'>" . $inactive;?> inactive devices</a>, and <?php echo "<a href='surplus.php'>" . $surplus ?> surplused</a> devices.</p>
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
