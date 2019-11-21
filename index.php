@@ -6,18 +6,23 @@
 
   require_once "config.php";
 
-  $stmt = $con->prepare("select count(*) as c from Proj_DEVICE");
+  $stmt = $con->prepare("select count(*) as c from Proj_DEVICE where Inactive = 0 and Surplus = 0");
   $stmt->execute();
 
   $row = $stmt->fetch(PDO::FETCH_OBJ);
-  $count = $row->c;
+  $active = $row->c;
 
   $stmt = $con->prepare("select count(*) as c from Proj_DEVICE where Inactive = 1");
   $stmt->execute();
 
   $row = $stmt->fetch(PDO::FETCH_OBJ);
   $inactive = $row->c;
-  $active = $count - $inactive;
+  
+  $stmt = $con->prepare("select count(*) as c from Proj_DEVICE where Surplus = 1");
+  $stmt->execute();
+
+  $row = $stmt->fetch(PDO::FETCH_OBJ);
+  $surplus = $row->c;
 ?>
 
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
@@ -89,7 +94,7 @@
             <i class="fas fa-table"></i>
             Assets</div>
           <div class="card-body">
-          <p class="text-center">There are <?php echo $active; ?> total active devices, <?php echo "<a href='inactive.php'>" . $inactive;?> inactive</a> devices.</p>
+          <p class="text-center">There are <?php echo "<a href='verify.php'>" . $active; ?> active</a> devices, <?php echo "<a href='inactive.php'>" . $inactive;?> inactive devices</a>, and <?php echo "<a href='surplus.php'>" . $surplus ?> surplused</a> devices.</p>
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>

@@ -55,21 +55,13 @@
               //var str = "<a href='change.php?a="
               return '<a href="change.php?a=' + data + '">' + data + '</a>';
             }
-          },
-          {
-            "targets": 4,
-            "data": null,
-            "defaultContent": "",
-            "render": function ( data, type, row, meta ) {
-              return '<button id="' + data[3] + '" onClick="activate(this.id)">Reactivate</button>';
-            }
           }
         ],
 
         "processing": true,
         "serverSide": true,
 
-        "ajax": "./inactive_server_proc.php",
+        "ajax": "./surplus_server_proc.php",
         "order": [3, 'asc']
       } );
     } );
@@ -103,7 +95,6 @@
                     <th>Manufacturer</th>
                     <th>Model</th>
                     <th>Serial Number</th>
-                    <th>Reactivate</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -112,7 +103,6 @@
                     <th>Manufacturer</th>
                     <th>Model</th>
                     <th>Serial Number</th>
-                    <th>Reactivate</th>
                   </tr>
                 </tfoot>
               </table>
