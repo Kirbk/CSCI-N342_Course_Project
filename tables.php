@@ -4,6 +4,36 @@ session_start();
     Header ("Location:login.php");
   include 'header.php';
   require_once "config.php";
+
+  if (isset($_POST['removecat'])) { // meow
+    $stmt = $con->prepare("update Proj_CATEGORY set Inactive = 1 where CID = ?");
+    $stmt->execute(array($_POST['Category']));
+    echo "<a style='color:white'>Successfully updated!</a>";
+  }
+
+  if (isset($_POST['removemanu'])) { // meow
+    $stmt = $con->prepare("update Proj_MANUFACTURER set Inactive = 1 where MID = ?");
+    $stmt->execute(array($_POST['Manufacturer']));
+    echo "<a style='color:white'>Successfully updated!</a>";
+  }
+
+  if (isset($_POST['removenetwork'])) { // meow
+    $stmt = $con->prepare("update Proj_NETWORK set Inactive = 1 where NID = ?");
+    $stmt->execute(array($_POST['Network']));
+    echo "<a style='color:white'>Successfully updated!</a>";
+  }
+
+  if (isset($_POST['removeperson'])) { // meow
+    $stmt = $con->prepare("update Proj_USER set Inactive = 1 where UID = ?");
+    $stmt->execute(array($_POST['User']));
+    echo "<a style='color:white'>Successfully updated!</a>";
+  }
+
+  if (isset($_POST['removeroom'])) { // meow
+    $stmt = $con->prepare("update Proj_LOCATION set Inactive = 1 where LID = ?");
+    $stmt->execute(array($_POST['Location']));
+    echo "<a style='color:white'>Successfully updated!</a>";
+  }
   
   if (isset($_POST['cat'])) {
     if (strcmp($_POST['Category'], "NewCategory") == 0) {
@@ -108,7 +138,7 @@ session_start();
                     <td><form action="" method="post"><select class="custom-select mr-sm-2" id="Category" name="Category" required>
 			    	<option value="NewCategory" selected>New...</option>
 				<?php
-					$stmt = $con->prepare("select CID as cid, Name as name from Proj_CATEGORY");
+					$stmt = $con->prepare("select CID as cid, Name as name from Proj_CATEGORY where Inactive=0");
 					$stmt->execute();
 					
 					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
@@ -117,7 +147,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-			</select><input type="text" name="addcateg" required><button type="reset" value="Reset">Delete</button></td>
+			</select><input type="text" name="addcateg"><button type="submit" id="removecat" name="removecat">Delete</button></td>
  		    <td><input type="submit" value="Submit" name="cat" id="cat"></form></td>
                   </tr>
                   <tr>
@@ -125,7 +155,7 @@ session_start();
 		    <td><form action="" method="post"><select class="custom-select mr-sm-2" id="Manufacturer" name="Manufacturer" required>
 			    	<option value="NewManufacturer" selected>New...</option>
 				<?php
-					$stmt = $con->prepare("select MID as mid, Name as name from Proj_MANUFACTURER");
+					$stmt = $con->prepare("select MID as mid, Name as name from Proj_MANUFACTURER where Inactive=0");
 					$stmt->execute();
 					
 					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
@@ -134,7 +164,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-				<input type="text" name="addmanu" required><button type="reset" value="Reset">Delete</button></td>
+				<input type="text" name="addmanu"><button type="submit" name="removemanu" id="removemanu">Delete</button></td>
  		    <td><input type="submit" value="Submit" name="manu" id="manu"></form></td>
                   </tr>
                   <tr>
@@ -142,7 +172,7 @@ session_start();
 		    <td><form action="" method="post"><select class="custom-select mr-sm-2" id="Network" name="Network" required>
 			    	<option value="NewNetwork" selected>New...</option>
 				<?php
-					$stmt = $con->prepare("select NID as nid, Name as name from Proj_NETWORK");
+					$stmt = $con->prepare("select NID as nid, Name as name from Proj_NETWORK where Inactive=0");
 					$stmt->execute();
 					
 					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
@@ -151,7 +181,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-				<form action="" method="post"><input type="text" name="addnetwork" required><button type="reset" value="Reset">Delete</button></td>
+				<form action="" method="post"><input type="text" name="addnetwork"><button type="submit" name="removenetwork" id="removenetwork">Delete</button></td>
  		    <td><input type="submit" value="Submit" name="network" id="network"></form></td>
                   </tr>
                   <tr>
@@ -159,7 +189,7 @@ session_start();
 		    <td><form action="" method="post"><select class="custom-select mr-sm-2" id="User" name="User" required>
 			    	<option value="NewUser" selected>New...</option>
 				<?php
-					$stmt = $con->prepare("select UID as uid, FirstName as first, LastName as last from Proj_USER");
+					$stmt = $con->prepare("select UID as uid, FirstName as first, LastName as last from Proj_USER where Inactive=0");
 					$stmt->execute();
 					
 					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
@@ -169,7 +199,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $first . " " . $last . "</option>";
 					}
 				?>
-				<input type="text" name="addpersonfirst" required><input type="text" name="addpersonlast" required><button type="reset" value="Reset">Delete</button></td>
+				<input type="text" name="addpersonfirst"><input type="text" name="addpersonlast"><button type="submit" id="removeperson" name="removeperson">Delete</button></td>
  		    <td><input type="submit" value="Submit" id="person" name="person"></form></td>
                   </tr>
                   <tr>
@@ -177,7 +207,7 @@ session_start();
 		    <td><form action="" method="post"><select class="custom-select mr-sm-2" id="Location" name="Location" required>
 			    	<option value="NewLocation" selected>New...</option>
 				<?php
-					$stmt = $con->prepare("select LID as lid, Name as name from Proj_LOCATION");
+					$stmt = $con->prepare("select LID as lid, Name as name from Proj_LOCATION where Inactive=0");
 					$stmt->execute();
 					
 					while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
@@ -186,7 +216,7 @@ session_start();
 						echo "<option value='" . $id . "'>" . $name . "</option>";
 					}
 				?>
-			</select><input type="text" name="addroom" required><button type="reset" value="Reset">Delete</button></td>
+			</select><input type="text" name="addroom"><button type="submit" name="removeroom" id="removeroom">Delete</button></td>
  		    <td><input type="submit" value="Submit" name="room" id="room"></form></td>
                   </tr>
                 </tbody>
