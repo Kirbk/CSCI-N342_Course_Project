@@ -11,25 +11,25 @@ session_start();
     echo "<a style='color:white'>Successfully updated!</a>";
   }
 
-  if (isset($_POST['removemanu'])) { // meow
+  if (isset($_POST['removemanu'])) {
     $stmt = $con->prepare("update Proj_MANUFACTURER set Inactive = 1 where MID = ?");
     $stmt->execute(array($_POST['Manufacturer']));
     echo "<a style='color:white'>Successfully updated!</a>";
   }
 
-  if (isset($_POST['removenetwork'])) { // meow
+  if (isset($_POST['removenetwork'])) {
     $stmt = $con->prepare("update Proj_NETWORK set Inactive = 1 where NID = ?");
     $stmt->execute(array($_POST['Network']));
     echo "<a style='color:white'>Successfully updated!</a>";
   }
 
-  if (isset($_POST['removeperson'])) { // meow
+  if (isset($_POST['removeperson'])) {
     $stmt = $con->prepare("update Proj_USER set Inactive = 1 where UID = ?");
     $stmt->execute(array($_POST['User']));
     echo "<a style='color:white'>Successfully updated!</a>";
   }
 
-  if (isset($_POST['removeroom'])) { // meow
+  if (isset($_POST['removeroom'])) {
     $stmt = $con->prepare("update Proj_LOCATION set Inactive = 1 where LID = ?");
     $stmt->execute(array($_POST['Location']));
     echo "<a style='color:white'>Successfully updated!</a>";
